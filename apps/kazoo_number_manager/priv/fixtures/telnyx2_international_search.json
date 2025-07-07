@@ -1,0 +1,88 @@
+{
+    "data": [
+        {
+            "features": [
+                {
+                    "name": "voice"
+                },
+                {
+                    "name": "local_calling"
+                },
+                {
+                    "name": "emergency"
+                },
+                {
+                    "name": "fax"
+                }
+            ],
+            "reservable": true,
+            "phone_number_type": "local",
+            "record_type": "available_phone_number",
+            "quickship": false,
+            "vanity_format": null,
+            "region_information": [
+                {
+                    "region_type": "location",
+                    "region_name": "LIVERPOOL"
+                },
+                {
+                    "region_type": "country_code",
+                    "region_name": "GB"
+                }
+            ],
+            "phone_number": "+441514561131",
+            "cost_information": {
+                "monthly_cost": "1.00000",
+                "upfront_cost": "1.00000",
+                "currency": "USD"
+            },
+            "best_effort": false
+        },
+        {
+            "features": [
+                {
+                    "name": "voice"
+                },
+                {
+                    "name": "local_calling"
+                },
+                {
+                    "name": "emergency"
+                },
+                {
+                    "name": "fax"
+                }
+            ],
+            "reservable": true,
+            "phone_number_type": "local",
+            "record_type": "available_phone_number",
+            "quickship": false,
+            "vanity_format": null,
+            "region_information": [
+                {
+                    "region_type": "location",
+                    "region_name": "LIVERPOOL"
+                },
+                {
+                    "region_type": "country_code",
+                    "region_name": "GB"
+                }
+            ],
+            "phone_number": "+441514561152",
+            "cost_information": {
+                "monthly_cost": "1.00000",
+                "upfront_cost": "1.00000",
+                "currency": "USD"
+            },
+            "best_effort": false
+        }
+    ],
+    "meta": {
+        "total_results": 5,
+        "best_effort_results": 0
+    },
+    "metadata": {
+        "total_results": 5,
+        "best_effort_results": 0
+    }
+}

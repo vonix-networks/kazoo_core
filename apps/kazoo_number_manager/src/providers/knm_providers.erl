@@ -188,6 +188,7 @@ service_name(<<"knm_telnyx_e911">>) -> ?LEGACY_TELNYX_E911;
 service_name(<<"knm_vitelity_e911">>) -> ?LEGACY_VITELITY_E911;
 service_name(<<"knm_cnam_notifier">>) -> <<"cnam">>;
 service_name(<<"knm_telnyx_cnam">>) -> <<"telnyx_cnam">>;
+service_name(<<"knm_telnyx2_cnam">>) -> <<"telnyx2_cnam">>;
 service_name(<<"knm_vitelity_cnam">>) -> <<"vitelity_cnam">>;
 service_name(Feature) -> Feature.
 
@@ -434,6 +435,7 @@ legacy_provider_to_feature(<<"cnam_notifier">>) -> ?FEATURE_CNAM;
 legacy_provider_to_feature(?LEGACY_DASH_E911) -> ?FEATURE_E911;
 legacy_provider_to_feature(<<"port_notifier">>) -> ?FEATURE_PORT;
 legacy_provider_to_feature(<<"telnyx_cnam">>) -> ?FEATURE_CNAM;
+legacy_provider_to_feature(<<"telnyx2_cnam">>) -> ?FEATURE_CNAM;
 legacy_provider_to_feature(?LEGACY_TELNYX_E911) -> ?FEATURE_E911;
 legacy_provider_to_feature(<<"vitelity_cnam">>) -> ?FEATURE_CNAM;
 legacy_provider_to_feature(?LEGACY_VITELITY_E911) -> ?FEATURE_E911;
@@ -506,7 +508,7 @@ e911_provider(AccountId) -> ?E911_PROVIDER(AccountId).
 -endif.
 
 -ifdef(TEST).
-cnam_provider(?RESELLER_ACCOUNT_ID) -> <<"knm_telnyx_cnam">>;
+cnam_provider(?RESELLER_ACCOUNT_ID) -> <<"knm_telnyx2_cnam">>;
 cnam_provider(AccountId) -> ?CNAM_PROVIDER(AccountId).
 -else.
 cnam_provider(AccountId) -> ?CNAM_PROVIDER(AccountId).

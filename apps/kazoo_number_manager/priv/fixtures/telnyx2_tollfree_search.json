@@ -1,0 +1,82 @@
+{
+    "data": [
+        {
+            "reservable": true,
+            "features": [
+                {
+                    "name": "fax"
+                },
+                {
+                    "name": "emergency"
+                },
+                {
+                    "name": "voice"
+                },
+                {
+                    "name": "sms"
+                },
+                {
+                    "name": "mms"
+                }
+            ],
+            "phone_number": "+18006198104",
+            "vanity_format": null,
+            "quickship": true,
+            "cost_information": {
+                "currency": "USD",
+                "upfront_cost": "1.00000",
+                "monthly_cost": "1.00000"
+            },
+            "best_effort": false,
+            "region_information": [
+                {
+                    "region_type": "country_code",
+                    "region_name": "US"
+                }
+            ],
+            "phone_number_type": "toll_free",
+            "record_type": "available_phone_number"
+        },
+        {
+            "reservable": true,
+            "features": [
+                {
+                    "name": "fax"
+                },
+                {
+                    "name": "emergency"
+                },
+                {
+                    "name": "voice"
+                },
+                {
+                    "name": "sms"
+                },
+                {
+                    "name": "mms"
+                }
+            ],
+            "phone_number": "+18009177894",
+            "vanity_format": null,
+            "quickship": true,
+            "cost_information": {
+                "currency": "USD",
+                "upfront_cost": "1.00000",
+                "monthly_cost": "1.00000"
+            },
+            "best_effort": false,
+            "region_information": [
+                {
+                    "region_type": "country_code",
+                    "region_name": "US"
+                }
+            ],
+            "phone_number_type": "toll_free",
+            "record_type": "available_phone_number"
+        }
+    ],
+    "meta": {
+        "total_results": 100,
+        "best_effort_results": 50
+    }
+}

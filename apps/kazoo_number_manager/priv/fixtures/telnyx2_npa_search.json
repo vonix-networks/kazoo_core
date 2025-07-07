@@ -1,0 +1,143 @@
+{
+    "data": [
+        {
+            "record_type": "available_phone_number",
+            "phone_number": "+13013596695",
+            "vanity_format": "",
+            "best_effort": false,
+            "quickship": true,
+            "reservable": true,
+            "region_information": [
+                {
+                    "region_type": "country_code",
+                    "region_name": "US"
+                }
+            ],
+            "cost_information": {
+                "upfront_cost": "3.21",
+                "monthly_cost": "6.54",
+                "currency": "USD"
+            },
+            "features": [
+                {
+                    "name": "sms"
+                },
+                {
+                    "name": "voice"
+                }
+            ]
+        },
+        {
+            "record_type": "available_phone_number",
+            "phone_number": "+13013591789",
+            "vanity_format": "",
+            "best_effort": false,
+            "quickship": true,
+            "reservable": true,
+            "region_information": [
+                {
+                    "region_type": "country_code",
+                    "region_name": "US"
+                }
+            ],
+            "cost_information": {
+                "upfront_cost": "3.21",
+                "monthly_cost": "6.54",
+                "currency": "USD"
+            },
+            "features": [
+                {
+                    "name": "sms"
+                },
+                {
+                    "name": "voice"
+                }
+            ]
+        },
+        {
+            "record_type": "available_phone_number",
+            "phone_number": "+13013590340",
+            "vanity_format": "",
+            "best_effort": false,
+            "quickship": true,
+            "reservable": true,
+            "region_information": [
+                {
+                    "region_type": "country_code",
+                    "region_name": "US"
+                }
+            ],
+            "cost_information": {
+                "upfront_cost": "3.21",
+                "monthly_cost": "6.54",
+                "currency": "USD"
+            },
+            "features": [
+                {
+                    "name": "sms"
+                },
+                {
+                    "name": "voice"
+                }
+            ]
+        },
+        {
+            "record_type": "available_phone_number",
+            "phone_number": "+13013596520",
+            "vanity_format": "",
+            "best_effort": false,
+            "quickship": true,
+            "reservable": true,
+            "region_information": [
+                {
+                    "region_type": "country_code",
+                    "region_name": "US"
+                }
+            ],
+            "cost_information": {
+                "upfront_cost": "3.21",
+                "monthly_cost": "6.54",
+                "currency": "USD"
+            },
+            "features": [
+                {
+                    "name": "sms"
+                },
+                {
+                    "name": "voice"
+                }
+            ]
+        },
+        {
+            "record_type": "available_phone_number",
+            "phone_number": "+13013596526",
+            "vanity_format": "",
+            "best_effort": false,
+            "quickship": true,
+            "reservable": true,
+            "region_information": [
+                {
+                    "region_type": "country_code",
+                    "region_name": "US"
+                }
+            ],
+            "cost_information": {
+                "upfront_cost": "3.21",
+                "monthly_cost": "6.54",
+                "currency": "USD"
+            },
+            "features": [
+                {
+                    "name": "sms"
+                },
+                {
+                    "name": "voice"
+                }
+            ]
+        }
+    ],
+    "meta": {
+        "total_results": 100,
+        "best_effort_results": 50
+    }
+}

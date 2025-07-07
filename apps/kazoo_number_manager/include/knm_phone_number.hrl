@@ -88,6 +88,7 @@
 
 -define(LEGACY_DASH_E911, <<"dash_e911">>).
 -define(LEGACY_TELNYX_E911, <<"telnyx_e911">>).
+-define(LEGACY_TELNYX2_E911, <<"telnyx2_e911">>).
 -define(LEGACY_VITELITY_E911, <<"vitelity_e911">>).
 
 -define(KAZOO_NUMBER_FEATURES, [

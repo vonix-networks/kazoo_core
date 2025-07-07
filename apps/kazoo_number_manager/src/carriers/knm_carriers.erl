@@ -170,6 +170,7 @@ all_modules() ->
     ,<<"knm_reserved_reseller">>
     ,<<"knm_simwood">>
     ,<<"knm_telnyx">>
+    ,<<"knm_telnyx2">>
     ,<<"knm_thinq">>
     ,<<"knm_verizon">>
     ,<<"knm_vitelity">>
