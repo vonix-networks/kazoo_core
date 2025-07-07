@@ -130,7 +130,7 @@ acquire_number(Number) ->
 -spec check_order(kz_term:api_binary(), kz_term:ne_binary(), kz_types:xml_el(), knm_phone_number:knm_phone_number(), knm_number:knm_number()) -> knm_number:knm_number().
 check_order(OrderId, <<"pending">>, _Response, PhoneNumber, Number) ->
   timer:sleep(?TELNYX2_ORDER_POLL_INTERVAL),
-  Rep = knm_telnyx2_util:req('get', ["number_orders/", kz_term:to_list(OrderId)]),
+  Rep = knm_telnyx2_util:req('get', ["number_orders", kz_term:to_list(OrderId)]),
   Data = kz_json:get_json_value(<<"data">>, Rep),
   case kz_json:get_ne_binary_value(<<"id">>, Data) of
     'undefined' ->
@@ -184,7 +184,7 @@ should_lookup_cnam() -> 'true'.
 numbers(SearchKind, Quantity, Prefix, NXX) ->
   Query = search_prefix(SearchKind, Prefix, NXX) ++ [{<<"filter[limit]">>, Quantity}],
 
-  Rep = knm_telnyx2_util:req('get', ["available_phone_numbers", "?"] ++ kz_http_util:props_to_querystring(Query)),
+  Rep = knm_telnyx2_util:req('get', ["available_phone_numbers?" ++ binary_to_list(list_to_binary(kz_http_util:props_to_querystring(Query)))]),
   kz_json:get_value(<<"data">>, Rep).
 
 numbers(JObjs, Options) ->

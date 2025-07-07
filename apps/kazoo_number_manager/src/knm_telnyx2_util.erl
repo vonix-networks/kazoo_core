@@ -53,7 +53,7 @@
 -define(TOKEN, kapps_config:get_ne_binary(?MOD_CONFIG_CAT, <<"token">>)).
 
 -define(DOMAIN, "api.telnyx.com").
--define(URL(Path), "https://" ?DOMAIN "/v2/" ++ Path).
+-define(URL(Path), "https://" ?DOMAIN "/v2/" ++ filename:join(Path)).
 
 %%------------------------------------------------------------------------------
 %% @doc Turns +13129677542 into %2B13129677542.
@@ -84,9 +84,9 @@ number_id(Number) ->
 
 -spec req(atom(), [nonempty_string()]) -> kz_json:object().
 -ifdef(TEST).
-req('get', ["number_orders/", "12ade33a-21c0-473b-b055-b3c836e1c292"]) ->
+req('get', ["number_orders", "12ade33a-21c0-473b-b055-b3c836e1c292"]) ->
     rep_fixture("telnyx2_check_order.json");
-req('get', ["available_phone_numbers" | Path]) ->
+req('get', Path) ->
     %% This is a hack to return the right fixture based on the path.
     ListPath = binary_to_list(list_to_binary(Path)),
     case {string:str(ListPath, "800"), string:str(ListPath, "301")} of
@@ -94,7 +94,6 @@ req('get', ["available_phone_numbers" | Path]) ->
         {_, X} when X > 0 -> rep_fixture("telnyx2_npa_search.json");
         _ -> rep_fixture("telnyx2_international_search.json")
     end.
-
 -else.
 req(Method, Path) ->
     req(Method, Path, kz_json:new()).

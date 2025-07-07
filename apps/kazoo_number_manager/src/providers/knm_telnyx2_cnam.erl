@@ -123,7 +123,7 @@ toggle_inbound(Number, ShouldEnable) ->
             Id = knm_telnyx2_util:number_id(Number),
             Key = <<"caller_id_name_enabled">>,
             Body = kz_json:from_list([{Key, ShouldEnable}]),
-            Rep = knm_telnyx2_util:req(patch, ["phone_numbers/", Id, "/voice"], Body),
+            Rep = knm_telnyx2_util:req(patch, ["phone_numbers", Id, "voice"], Body),
             Data = kz_json:get_json_value(<<"data">>, Rep),
             ShouldEnable = kz_json:is_true(Key, Data)
     end.
@@ -134,7 +134,7 @@ set_outbound(Number, NewCNAM) ->
     Body = kz_json:from_list([{<<"cnam_listing">>, kz_json:from_list([{<<"cnam_listing_details">>, NewCNAM}
                              ,{<<"cnam_listing_enabled">>, true}
          ])}]),
-    Rep = knm_telnyx2_util:req(patch, ["phone_numbers/", Id, "/voice"], Body),
+    Rep = knm_telnyx2_util:req(patch, ["phone_numbers", Id, "voice"], Body),
     Data = kz_json:get_json_value(<<"data">>, Rep),
     NewCNAMListing = kz_json:get_json_value(<<"cnam_listing">>, Data),
     NewCNAM = kz_json:get_ne_binary_value(<<"cnam_listing_details">>, NewCNAMListing).
