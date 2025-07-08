@@ -192,7 +192,7 @@ urlencode_plus(<<C, R/binary>>, Acc) ->
     end.
 
 uri_parse(URL) ->
-    #{scheme:=Scheme,host:=Host,port:=Port,path:=Path} = uri_string:parse(URL),
+    #{scheme := Scheme, host := Host, port := Port, path := Path} = uri_string:parse(URL),
     {ok, Scheme, Host, Port, Path}.
 
 %%------------------------------------------------------------------------------

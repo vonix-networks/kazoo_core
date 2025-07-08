@@ -1,0 +1,66 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: erlang:24.3.4.17  # Primary container
+      - image: rabbitmq:3.12-management  # RabbitMQ service
+      - image: couchdb:3  # CouchDB service
+        environment:
+          COUCHDB_USER: admin
+          COUCHDB_PASSWORD: password
+    working_directory: ~/project
+    steps:
+      - checkout
+      
+      - run:
+          name: Install Dependencies (LibreOffice + PDF2TIFF)
+          command: |
+            apt-get update && apt-get install -y \
+              netcat \
+              curl \
+              libreoffice \
+              fonts-dejavu \
+              libtiff-tools \
+              ghostscript \
+              --no-install-recommends && \
+            apt-get clean && rm -rf /var/lib/apt/lists/*
+
+      - run:
+          name: Wait for CouchDB and RabbitMQ
+          command: |
+            echo "Waiting for CouchDB..."
+            timeout=60
+            until curl -s -u admin:password http://localhost:5984/; do
+              ((timeout--)) || { echo "CouchDB not responding in time"; exit 1; }
+              sleep 1
+            done
+            echo "CouchDB is up!"
+
+            echo "Waiting for RabbitMQ..."
+            timeout=60
+            until nc -z localhost 5672; do
+              ((timeout--)) || { echo "RabbitMQ not responding in time"; exit 1; }
+              sleep 1
+            done
+            echo "RabbitMQ is up!"
+
+      - run:
+          name: Prepare Config File
+          command: |
+            mkdir -p /etc/kazoo/core/
+            cp ./config/config.ini.circleci /etc/kazoo/core/config.ini
+
+      - run:
+          name: Compile Code
+          command: make compile
+
+      - run:
+          name: Run Tests
+          command: make test && make ct
+
+workflows:
+  version: 2
+  build-and-test:
+    jobs:
+      - build

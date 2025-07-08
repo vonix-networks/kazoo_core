@@ -166,12 +166,12 @@ encode('undefined', _) ->
 encode(JObjs, Options) when is_list(JObjs) ->
     case lists:all(fun(JObj) -> is_valid_json_object(JObj) end, JObjs) of
         'true' -> jiffy:encode(JObjs, Options);
-        'false' ->  throw({'error', {'invalid_ejson', JObjs}})
+        'false' -> throw({'error', {'invalid_ejson', JObjs}})
     end;
-encode(JObj, Options) -> 
+encode(JObj, Options) ->
     case is_valid_json_object(JObj) of
         'true' -> jiffy:encode(JObj, Options);
-        'false' ->  throw({'error', {'invalid_ejson', JObj}})
+        'false' -> throw({'error', {'invalid_ejson', JObj}})
     end.
 
 -spec unsafe_decode(iolist() | kz_term:ne_binary()) -> json_term().

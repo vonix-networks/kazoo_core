@@ -417,9 +417,9 @@ kz_log_md_put(K, V) ->
 is_kz_log_md_equal({K1, _}, {K2, _}) -> K1 =< K2;
 is_kz_log_md_equal(K1, K2) -> K1 =< K2.
 
--spec kz_log_md_clear() -> any().
+-spec kz_log_md_clear() -> ok.
 kz_log_md_clear() ->
-    lager:md([]).
+    lager:md([{'all', 'clear'}]).
 
 %%------------------------------------------------------------------------------
 %% @doc Gives `MaxTime' milliseconds to `Fun' of `Arguments' to apply.
