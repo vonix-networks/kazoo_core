@@ -182,7 +182,7 @@ should_lookup_cnam() -> 'true'.
 -spec numbers(kind(), pos_integer(), kz_term:ne_binary(), kz_term:api_ne_binary()) ->
   kz_json:objects().
 numbers(SearchKind, Quantity, Prefix, NXX) ->
-  Query = search_prefix(SearchKind, Prefix, NXX) ++ [{<<"filter[limit]">>, Quantity}],
+  Query = search_prefix(SearchKind, Prefix, NXX) ++ [{<<"filter%5Blimit%5D">>, Quantity}],
 
   Rep = knm_telnyx2_util:req('get', ["available_phone_numbers?" ++ binary_to_list(list_to_binary(kz_http_util:props_to_querystring(Query)))]),
   kz_json:get_value(<<"data">>, Rep).
@@ -199,22 +199,22 @@ international_numbers(JObjs, Options) ->
 
 -spec search_prefix(kind(), kz_term:ne_binary(), kz_term:api_ne_binary()) -> kz_json:json_proplist().
 search_prefix('tollfree', NPA, 'undefined') ->
-  [{<<"filter[national_destination_code]">>, NPA}
+  [{<<"filter%5Bnational_destination_code%5D">>, NPA}
     , should_keep_best_effort()
   ];
 search_prefix('region', Country, 'undefined') ->
-  [{<<"filter[country_code]">>, Country}
+  [{<<"filter%5Bcountry_code%5D">>, Country}
     , should_keep_best_effort()
   ];
 search_prefix('npa', NPA, 'undefined') ->
-  [{<<"filter[national_destination_code]">>, NPA}
+  [{<<"filter%5Bnational_destination_code%5D">>, NPA}
     , should_keep_best_effort()
   ];
 search_prefix(Kind, Filter, Prefix) ->
-  [{<<"filter[phone_number][starts_with]">>, Prefix}
+  [{<<"filter%5Bphone_number%5D%5Bstarts_with%5D">>, Prefix}
     | search_prefix(Kind, Filter, 'undefined')
   ].
 
 -spec should_keep_best_effort() -> {kz_term:ne_binary(), boolean()}.
-should_keep_best_effort() -> {<<"filter[best_effort]">>, kz_term:to_binary(?SHOULD_KEEP_BEST_EFFORT)}.
+should_keep_best_effort() -> {<<"filter%5Bbest_effort%5D">>, kz_term:to_binary(?SHOULD_KEEP_BEST_EFFORT)}.
 %%% End of Module
