@@ -134,6 +134,12 @@ rep_fixture(Fixture) ->
 -else.
 
 -spec req(atom(), [nonempty_string()], kz_json:object()) -> kz_json:object().
+req('get' = _Method, Path, EmptyJObj) ->
+    Url = ?URL(Path),
+    Headers = http_headers(EmptyJObj),
+    ?DEBUG_APPEND("Request:~n~s ~s~n~p~n", [_Method, Url, Headers]),
+    Resp = kz_http:get(Url, Headers, http_options()),
+    rep(Resp);
 req('delete' = _Method, Path, EmptyJObj) ->
     Url = ?URL(Path),
     Headers = http_headers(EmptyJObj),
