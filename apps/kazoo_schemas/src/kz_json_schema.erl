@@ -101,7 +101,7 @@ setup_extra_validator(Options) ->
     | kz_datamgr:data_error().
 -ifdef(TEST).
 load(Schema) ->
-    ?LOG_DEBUG("TEST Load: ~s", [Schema]),
+    ?LOG_DEV("TEST Load: ~s", [Schema]),
     fload(<<"apps/kazoo_schemas/test/fixtures/", Schema/binary, ".json">>).
 -else.
 -spec load(kz_term:ne_binary() | string()) -> load_return().
@@ -126,7 +126,6 @@ fload(<<"./", Schema/binary>>) ->
 fload(<<"file://", Schema/binary>>) ->
     fload(Schema);
 fload(<<Schema/binary>>) ->
-    
     case filelib:is_regular(Schema) of
         'true' -> fload_file(Schema);
         'false' -> find_and_fload(Schema)
@@ -137,6 +136,15 @@ fload(Schema) ->
 -spec find_and_fload(kz_term:ne_binary()) ->
     {'ok', kz_json:object()}
     | {'error', 'not_found'}.
+-ifdef(TEST).
+find_and_fload(Schema) ->
+    PrivDir = "./apps/kazoo_schemas/test/fixtures/",
+    SchemaPath = filename:join([PrivDir, maybe_add_ext(Schema)]),
+    case filelib:is_regular(SchemaPath) of
+        'true' -> fload_file(SchemaPath);
+        'false' -> {'error', 'not_found'}
+    end.
+-else.
 find_and_fload(Schema) ->
     PrivDir = code:priv_dir('crossbar'),
     SchemaPath = filename:join([PrivDir, "couchdb", "schemas", maybe_add_ext(Schema)]),
@@ -144,6 +152,7 @@ find_and_fload(Schema) ->
         'true' -> fload_file(SchemaPath);
         'false' -> {'error', 'not_found'}
     end.
+-endif.
 
 -spec fload_file(kz_term:ne_binary()) -> {'ok', kz_json:object()}.
 fload_file(SchemaPath) ->

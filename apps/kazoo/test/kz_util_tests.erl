@@ -83,7 +83,7 @@ log_test_() ->
 
 calling_app_test_() ->
     [
-        ?_assertEqual(eunit, maps:get(app, kz_util:calling_process())),
+        ?_assertEqual(eunit_test, maps:get(app, kz_util:calling_process())),
         ?_assertMatch(undefined, kz_util:get_app("kazoo"))
     ].
 
