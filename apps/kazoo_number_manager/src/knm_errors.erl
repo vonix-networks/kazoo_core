@@ -171,7 +171,7 @@ to_json('not_enough_credit', AccountId, Reason) ->
         [AccountId]
     ),
     build_error(402, 'not_enough_credit', kz_term:to_binary(Message), Reason);
-to_json({invalid_ejson, _}=E, _, Cause) ->
+to_json({invalid_ejson, _} = E, _, Cause) ->
     ?LOG_ERROR("Invalid json: ~p/~p", [E, Cause]),
     build_error(500, 'unspecified_fault', <<"invalid json">>, Cause);
 to_json(Reason, _, Cause) ->

@@ -1217,7 +1217,7 @@ set_feature(PN0, Feature = ?NE_BINARY, Data) ->
         end,
     PN = set_features(PN0, kz_json:set_value(Feature, Data, Features)),
     PN#knm_phone_number.is_dirty andalso
-        ?LOG_DEBUG("setting ~s feature ~s: ~s", [number(PN), Feature, kz_json:encode(Data)]),
+        ?LOG_DEBUG("setting ~p feature ~p: ~p", [number(PN), Feature, Data]),
     PN.
 
 -spec reset_features(knm_phone_number()) -> knm_phone_number().
