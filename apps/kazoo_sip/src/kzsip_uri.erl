@@ -34,8 +34,8 @@
 
 -include("kazoo_sip.hrl").
 
--type uri() :: nklib:uri().
--type uris() :: nklib_parse_uri:uris().
+-type uri() :: #uri{}.
+-type uris() :: [uri()].
 -export_type([uri/0, uris/0]).
 
 -type scheme() :: 'sip' | 'sips'.
@@ -49,15 +49,15 @@
 -export_type([sip_uri/0]).
 
 -spec uris(binary() | string() | uri()) -> [uri()] | 'error'.
-uris(Uri) -> nklib_parse_uri:uris(Uri).
+uris(Uri) -> kzsip_parse_uri:uris(Uri).
 
 -spec ruri(uri()) -> binary().
-ruri(#uri{scheme = 'undefined'} = Uri) -> nklib_unparse:uri3(Uri#uri{scheme = 'sip'});
-ruri(Uri) -> nklib_unparse:uri3(Uri).
+ruri(#uri{scheme = 'undefined'} = Uri) -> kzsip_unparse:uri3(Uri#uri{scheme = 'sip'});
+ruri(Uri) -> kzsip_unparse:uri3(Uri).
 
 -spec uri(uri()) -> binary().
-uri(#uri{scheme = 'undefined'} = Uri) -> nklib_unparse:uri(Uri#uri{scheme = 'sip'});
-uri(Uri) -> nklib_unparse:uri(Uri).
+uri(#uri{scheme = 'undefined'} = Uri) -> kzsip_unparse:uri(Uri#uri{scheme = 'sip'});
+uri(Uri) -> kzsip_unparse:uri(Uri).
 
 -spec parse(kz_term:ne_binary()) -> sip_uri().
 parse(Bin) ->
