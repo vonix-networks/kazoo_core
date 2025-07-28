@@ -35,7 +35,7 @@
 -include("kazoo_sip.hrl").
 
 -type uri() :: #uri{}.
--type uris() :: [uri()].
+-type uris() :: kzsip_parse_uri:uris().
 -export_type([uri/0, uris/0]).
 
 -type scheme() :: 'sip' | 'sips'.
